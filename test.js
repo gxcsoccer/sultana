@@ -3,7 +3,10 @@ var Sultana = require("./index"),
 
 app.use(Sultana.test1());
 
-app.on("1001", function(err, data) {
+app.route("1001", function(data, next) {
+	console.log("hello");
+	next();
+}, function(err, data) {
 	console.log(data.data);
 	data.socket.send("received");
 });
